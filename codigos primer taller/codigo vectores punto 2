@@ -1,0 +1,126 @@
+import numpy as np
+
+def volvervectorr3(a):
+    ceros = np.zeros(3)
+    ceros[0] = a[0]
+    ceros[1] = a[1]
+    ceros[2] = a[2]
+    return ceros
+ 
+def anguloentrevectores(a,b):
+    maga = np.sqrt(a[0]**2 + a[1]**2 + a[2]**2)
+    magb = np.sqrt(b[0]**2 + b[1]**2 + b[2]**2)
+    alpha = np.arccos(np.dot(a,b)/(maga*magb)) 
+    return alpha
+#Punto 6 de la seccion 1.2.7
+
+un = [] #se crea una lista donde almacenar los vectores unitarios.
+
+for i in range(3):
+    u = np.zeros(3)
+    u[i] = 1
+    un.append(u)
+    u = np.zeros(3)
+
+u = un[0] + 2*un[1] + 3*un[2]
+v = 4*un[0] + 5*un[1] + 6*un[2]
+w = 3*un[0] + 2*un[1] + un[2]
+l = 6*un[0] + 5*un[1] + 4*un[2]
+vect = [u,v,w,l]
+
+#Punto a
+
+print(f'El resultado de u+v+w+l es: {u+v+w+l}.')
+print(f'El resultado de u+v-w-l es: {u+v-w-l}.')
+print(f'El resultado de u-v+w-l es: {u-v+w-l}.')
+print(f'El resultado de -u+v-w+l es: {-u+v-w+l}.')
+
+
+#Punto b
+def angentrevec(a, b):
+    maga = np.sqrt(a[0]**2 + a[1]**2 + a[2]**2)
+    magb = np.sqrt(b[0]**2 + b[1]**2 + b[2]**2)
+    alpha = np.arccos(np.dot(a,b)/maga * magb)
+    return alpha
+
+vectu = volvervectorr3(u)
+vectv = volvervectorr3(v)
+vectw = volvervectorr3(w)
+vectl = volvervectorr3(l)
+vecte1 = volvervectorr3(un[0])
+vecte2 = volvervectorr3(un[1])
+vecte3 = volvervectorr3(un[2])
+'''
+print(f'El angulo entre los vectores u y e1 es: {angentrevec(vectu, vecte1)*180/np.pi} grados.')
+print(f'El angulo entre los vectores u y e2 es: {angentrevec(vectu, vecte2)*180/np.pi} grados.')
+print(f'El angulo entre los vectores u y e3 es: {angentrevec(vectu, vecte3)*180/np.pi} grados.')
+print(f'El angulo entre los vectores v y e1 es: {angentrevec(vectv, vecte1)*180/np.pi} grados.')
+print(f'El angulo entre los vectores v y e2 es: {angentrevec(vectv, vecte2)*180/np.pi} grados.')
+print(f'El angulo entre los vectores v y e3 es: {angentrevec(vectv, vecte3)*180/np.pi} grados.')
+print(f'El angulo entre los vectores w y e1 es: {angentrevec(vectw, vecte1)*180/np.pi} grados.')
+print(f'El angulo entre los vectores w y e2 es: {angentrevec(vectw, vecte2)*180/np.pi} grados.')
+print(f'El angulo entre los vectores w y e3 es: {angentrevec(vectw, vecte3)*180/np.pi} grados.')
+print(f'El angulo entre los vectores l y e1 es: {angentrevec(vectl, vecte1)*180/np.pi} grados.')
+print(f'El angulo entre los vectores l y e2 es: {angentrevec(vectl, vecte2)*180/np.pi} grados.')
+print(f'El angulo entre los vectores l y e3 es: {angentrevec(vectl, vecte3)*180/np.pi} grados.')
+'''
+
+#Punto c
+
+mag = []
+for i in range(4):
+    h = vect[i]
+    mgn = np.sqrt(h[0]**2+h[1]**2+h[2]**2)
+    mag.append(mgn)
+    mgn = 0
+
+print(f'La magnitud del vector u es: {mag[0]}.')
+print(f'La magnitud del vector v es: {mag[1]}.')
+print(f'La magnitud del vector w es: {mag[2]}.')
+print(f'La magnitud del vector l es: {mag[3]}.')
+
+#Punto d
+
+print(f'El angulo entre los vectores u y v es: {anguloentrevectores(vectu, vectv)*180/np.pi}')
+print(f'El angulo entre los vectores u y v es: {anguloentrevectores(vectw, vectl)*180/np.pi}')
+
+#punto e 
+
+ 
+def proyortogonal(a,b):
+    mgna = np.dot(a,a)
+    vectproy = (np.dot(a,b)/mgna)*a
+    return vectproy
+
+print(f'La proyeccion ortogonal de u sobre v es {proyortogonal(v,u)}.')
+
+#punto f
+
+matriz1 = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [3, 2, 1]])
+matriz2 = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [6, 5, 4]])
+
+if np.linalg.det(matriz1) == np.linalg.det(matriz2):
+    print('A, B, C y D son coplanares')
+else:
+    print('A, B, C y D NO son coplanares')
+
+#punto g 
+    aplusb = u + v
+    cplusd = w + l
+    print(f'El producto punto de a+d con c+d es: {np.dot(aplusb, cplusd)}')
+
+#punto h
+    axb = np.cross(u,v)
+    bxc = np.cross(v,w)
+    cxd = np.cross(w,l)
+    print(f'El angulo entre axb y d es: {anguloentrevectores(axb, l)} radianes.')
+    print(f'El angulo entre bxc y d es: {anguloentrevectores(bxc, l)} radianes.')
+    print(f'El angulo entre cxd y d es: {anguloentrevectores(cxd, l)} radianes.')
+
+#punto i
+    
+print(f'EL producto triple c.(axb) es: {np.dot(w, np.cross(u,v))}.')
