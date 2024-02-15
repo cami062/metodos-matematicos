@@ -1,0 +1,31 @@
+def main():
+    # Solicitar al usuario las coordenadas de los vértices del triángulo
+    print("Introduce las coordenadas de los vértices del triángulo:")
+    vertices = [pedir_vertice("A"), pedir_vertice("B"), pedir_vertice("C")]
+
+    # Calcular los vectores a, b y c desde el origen hasta los vértices A, B y C, respectivamente
+    a = vertices[0]
+    b = vertices[1]
+    c = vertices[2]
+
+    # Calcular el centroide g
+    g = calcular_centroide(a, b, c)
+
+    # Imprimir el resultado
+    print("El centroide del triángulo es:", g)
+
+def pedir_vertice(nombre):
+    # Función para solicitar al usuario las coordenadas de un vértice
+    print(f"Introduce las coordenadas del vértice {nombre}:")
+    x = float(input(f"Coordenada x del vértice {nombre}: "))
+    y = float(input(f"Coordenada y del vértice {nombre}: "))
+    z = float(input(f"Coordenada z del vértice {nombre}: "))
+    return [x, y, z]
+
+def calcular_centroide(a, b, c):
+    # Función para calcular el centroide del triángulo dado los vectores a, b y c
+    g = [(a[i] + b[i] + c[i]) / 3 for i in range(len(a))]
+    return g
+
+if __name__ == "__main__":
+    main()
