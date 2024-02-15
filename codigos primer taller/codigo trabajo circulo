@@ -1,0 +1,33 @@
+import numpy as np
+from scipy.integrate import quad
+
+def campo_de_fuerza(x, y):
+    Fx = -y / (x**2 + y**2)
+    Fy = x / (x**2 + y**2)
+    return np.array([Fx, Fy])
+
+def trayectoria(t):
+    x = np.cos(t)
+    y = np.sin(t)
+    return np.array([x, y])
+
+def dtrayectoria_dt(t):
+    dx_dt = -np.sin(t)
+    dy_dt = np.cos(t)
+    return np.array([dx_dt, dy_dt])
+
+def trabajo_contrario_agujas_reloj():
+    trabajo, _ = quad(lambda t: np.dot(campo_de_fuerza(*trayectoria(t)), dtrayectoria_dt(t)), 0, np.pi)
+    return trabajo
+
+def trabajo_sentido_agujas_reloj():
+    trabajo, _ = quad(lambda t: np.dot(campo_de_fuerza(*trayectoria(t)), dtrayectoria_dt(t)), 0, -np.pi)
+    return trabajo
+
+# Calcular el trabajo en sentido contrario a las agujas del reloj
+trabajo_ccw = trabajo_contrario_agujas_reloj()
+print("Trabajo en sentido contrario a las agujas del reloj:", trabajo_ccw)
+
+# Calcular el trabajo en sentido de las agujas del reloj
+trabajo_cw = trabajo_sentido_agujas_reloj()
+print("Trabajo en sentido de las agujas del reloj:", trabajo_cw)
