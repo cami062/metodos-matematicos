@@ -7,3 +7,5 @@ En este repositorio se consignan los codigos, talleres y asignaciones de la asig
   + 1.2. [Taller 2](https://github.com/cami062/metodos-matematicos/blob/41e145f4e13f8326cdddecfc8ec7ef15093de61a/taller%202%20m.mat.pdf)
 ## 2. ASIGNACIONES
   + 2.1.[Asignacion 1](https://github.com/cami062/metodos-matematicos/blob/000320be952bd6235a83e1d23988a01266617157/asignacion%201.pdf)
+## 3. EXAMENES
+  + 3.1. [Examen 1](https://github.com/cami062/metodos-matematicos/blob/26c35811b4802f21235ea722874f83670a1e4b03/Examen1.pdf) 
